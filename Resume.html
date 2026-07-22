@@ -17,15 +17,33 @@
             --border-glow: rgba(0, 255, 136, 0.3);
         }
 
-        html, body {
+        body {
             margin: 0;
             padding: 0;
-            height: 100%;
-            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             display: flex;
             flex-direction: column;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Particle Canvas Background */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        header, main, footer {
+            position: relative;
+            z-index: 2;
         }
 
         header {
@@ -42,11 +60,9 @@
 
         header h1 {
             margin: 0;
-            font-family: inherit;
             color: var(--text-main);
             font-size: 2rem;
             font-weight: 700;
-            letter-spacing: -0.5px;
         }
 
         nav {
@@ -58,7 +74,6 @@
             text-decoration: none;
             color: var(--text-muted);
             font-weight: 500;
-            font-size: 1rem;
             transition: color 0.2s ease;
         }
 
@@ -66,13 +81,135 @@
             color: var(--accent-primary);
         }
 
-        iframe {
+        main {
+            max-width: 850px;
+            margin: 140px auto 40px auto;
+            padding: 0 2rem;
             flex: 1;
-            border: none;
             width: 100%;
-            height: calc(100vh - 110px); 
-            margin-top: 110px;
-            background-color: var(--bg-color);
+            box-sizing: border-box;
+        }
+
+        .resume-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .resume-actions span {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .btn {
+            background-color: transparent;
+            color: var(--accent-primary);
+            border: 1px solid var(--accent-primary);
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-glow);
+            box-shadow: 0 0 12px var(--accent-glow);
+        }
+
+        section {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        section h2 {
+            margin-top: 0;
+            color: var(--accent-primary);
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.6rem;
+            text-transform: uppercase;
+        }
+
+        .item {
+            margin-bottom: 1.5rem;
+        }
+
+        .item:last-child {
+            margin-bottom: 0;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+        }
+
+        .item-title {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--text-main);
+        }
+
+        .item-subtitle {
+            color: var(--accent-primary);
+            font-size: 0.95rem;
+        }
+
+        .item-meta {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        ul {
+            margin: 0.6rem 0 0 1.2rem;
+            color: var(--text-main);
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+            line-height: 1.5;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .skill-category h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 0.95rem;
+            color: var(--accent-primary);
+        }
+
+        .skill-category p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         footer {
@@ -80,13 +217,14 @@
             padding: 1.5rem;
             color: var(--text-muted);
             font-size: 0.95rem;
-            font-family: inherit;
             background-color: var(--header-bg);
             border-top: 1px solid var(--border-color);
         }
     </style>
 </head>
 <body>
+    <canvas id="particle-canvas"></canvas>
+
     <header>
         <h1>Resume</h1>
         <nav>
@@ -96,10 +234,201 @@
         </nav>
     </header>
 
-    <iframe src="vaibhav_satish.pdf"></iframe>
+    <main>
+        <div class="resume-actions">
+            <span>Prefer viewing the native document format?</span>
+            <a href="vaibhav_satish.pdf" class="btn" download>Download PDF</a>
+        </div>
+
+        <section>
+            <h2>Education</h2>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Bachelor of Science, Computer Science</span>
+                    <span class="item-meta">Aug 2024 - Dec 2027</span>
+                </div>
+                <div class="item-subtitle">University of California, Irvine: Donald Bren School of Information and Computer Science</div>
+                <div class="item-meta" style="margin-top: 0.3rem;">GPA: 3.873 | Achievements: Dean's Honors List (6/6 consecutive academic quarters)</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Work Experience</h2>
+            
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Software Engineering / Machine Learning Intern</span>
+                    <span class="item-meta">Jun 2026 - Present</span>
+                </div>
+                <div class="item-subtitle">Stealth AI Startup &bull; Irvine, CA</div>
+                <ul>
+                    <li>Created and hosted an OpenAPI API documentation system utilized by the entire development team, including the CTO and senior engineers, by dynamically generating endpoint details from JSDoc comments.</li>
+                    <li>Improved measurement pipeline to process 13 outputs from a Multilayer Perceptron model, geometrically calculate 8 length-based measurements, and derive 4 additional circumference measurements using an anthropometric prior fusing system.</li>
+                </ul>
+            </div>
+
+            <div class="item" style="margin-top: 1.5rem;">
+                <div class="item-header">
+                    <span class="item-title">Software Developer Research Assistant</span>
+                    <span class="item-meta">Mar 2026 - Present</span>
+                </div>
+                <div class="item-subtitle">UC Irvine Charlie Dunlop School of Biological Sciences &bull; Irvine, CA</div>
+                <ul>
+                    <li>Architected a full-stack cognitive research game for the MindCycle application, advancing the asset into active user testing and clinical research trials.</li>
+                    <li>Initiated development of a second application game, engineering modular components to support upcoming simulation pipelines.</li>
+                    <li>Collaborated with the UCI SLEEP Lab under Dr. Katherine Simon to build data pipelines, tracking 4+ core behavioral metrics via backend logging.</li>
+                </ul>
+            </div>
+
+            <div class="item" style="margin-top: 1.5rem;">
+                <div class="item-header">
+                    <span class="item-title">Software Development Co-Lead</span>
+                    <span class="item-meta">Sep 2024 - Present</span>
+                </div>
+                <div class="item-subtitle">MedTech@UCI &bull; Irvine, CA</div>
+                <ul>
+                    <li>Co-lead a cross-functional team of 5 engineers using Unity and C# to develop a pediatric cognitive analysis app with image-recognition and memory tools, enabling earlier detection of cognitive delays.</li>
+                    <li>Designed interactive cognitive games using React.js and JS, delivering therapeutic interfaces for dementia and Alzheimer's patients.</li>
+                    <li>Engineered a React metrics-tracking engine to capture 15+ core cognitive metrics, providing clinicians with actionable analytical insights.</li>
+                </ul>
+            </div>
+
+            <div class="item" style="margin-top: 1.5rem;">
+                <div class="item-header">
+                    <span class="item-title">Software Development Intern & Instructor</span>
+                    <span class="item-meta">Jun 2025 - Aug 2025</span>
+                </div>
+                <div class="item-subtitle">Tech Academy of Minnesota &bull; Seattle, WA</div>
+                <ul>
+                    <li>Delivered full-stack curriculum to 18 students, guiding end-to-end web app development using Python, HTML, CSS, and JS.</li>
+                    <li>Formulated structured debugging frameworks and 12 lab exercises, accelerating core engineering and algorithmic problem-solving.</li>
+                    <li>Translated complex software engineering paradigms into digestible concepts, optimizing delivery to boost student project completion rates to 100%.</li>
+                </ul>
+            </div>
+
+            <div class="item" style="margin-top: 1.5rem;">
+                <div class="item-header">
+                    <span class="item-title">Artificial Intelligence Researcher</span>
+                    <span class="item-meta">May 2023 - Nov 2023</span>
+                </div>
+                <div class="item-subtitle">Stanford University, Georgia Tech, UC San Diego & Cornell University &bull; Remote</div>
+                <ul>
+                    <li>Developed, tuned, and trained multi-modal predictive models—including Softmax Regression and DNNs—using PyTorch and Scikit-Learn to analyze NFL datasets, improving predictive accuracy by 14% over baseline models.</li>
+                    <li>Trained 3+ TensorFlow and Scikit-Learn models to demonstrate computer-vision applications in detecting distracted driving and achieved 80-85% accuracy.</li>
+                    <li>Engineered high-dimensional feature preprocessing pipelines using Pandas and NumPy, cutting down processing latencies and streamlining next-stage development timelines by 25%.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <p>Java, Python, C++, SQL, TypeScript, JavaScript, C#, HTML/CSS</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Frameworks & Tools</h3>
+                    <p>React, Node.js, Next.js, FastAPI, REST APIs, OpenAPI, PyTorch, TensorFlow, Scikit-Learn, Git, Unity</p>
+                </div>
+                <div class="skill-category">
+                    <h3>Methodologies & Domains</h3>
+                    <p>Agile/Scrum, CI/CD, System Architecture, Product Roadmaps, UX Research</p>
+                </div>
+                <div class="skill-category">
+                    <h3>AI Specializations</h3>
+                    <p>Supervised/Unsupervised Learning, NLP, Computer Vision</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
         &copy; 2025 Vaibhav Satish
     </footer>
+
+    <script>
+        // Enhanced Dynamic Particle Background Script (Increased Visibility)
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let particlesArray = [];
+        const numberOfParticles = 75; // Increased particle count
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2.5 + 1.2; // Slightly larger particles
+                this.speedX = (Math.random() - 0.5) * 0.9;
+                this.speedY = (Math.random() - 0.5) * 0.9;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x > canvas.width) this.x = 0;
+                else if (this.x < 0) this.x = canvas.width;
+
+                if (this.y > canvas.height) this.y = 0;
+                else if (this.y < 0) this.y = canvas.height;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(0, 255, 136, 0.75)'; // Higher opacity for more punch
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particlesArray = [];
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function connectParticles() {
+            let maxDistance = 140; // Wider connection distance
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a + 1; b < particlesArray.length; b++) {
+                    let dx = particlesArray[a].x - particlesArray[b].x;
+                    let dy = particlesArray[a].y - particlesArray[b].y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < maxDistance) {
+                        let opacity = (1 - (distance / maxDistance)) * 0.35; // Increased line visibility
+                        ctx.strokeStyle = `rgba(0, 255, 136, ${opacity})`;
+                        ctx.lineWidth = 1.2;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+            }
+            connectParticles();
+            requestAnimationFrame(animateParticles);
+        }
+
+        initParticles();
+        animateParticles();
+    </script>
 </body>
 </html>
