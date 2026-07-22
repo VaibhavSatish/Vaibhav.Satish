@@ -5,64 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vaibhav Satish - Resume</title>
     <style>
+        :root {
+            --bg-color: #05050a;
+            --card-bg: rgba(18, 18, 31, 0.85);
+            --accent-blue: #0800ff;
+            --accent-cyan: #00f0ff;
+            --text-main: #f0f0f5;
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --border-glow: rgba(0, 240, 255, 0.4);
+        }
+
         html, body {
             margin: 0;
             padding: 0;
             height: 100%;
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 
                          'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            background-color: #000000;
+            background-color: var(--bg-color);
+            color: var(--text-main);
             display: flex;
             flex-direction: column;
         }
 
         header {
-            background-color: #fff;
+            background: linear-gradient(135deg, #0b0b16 0%, #1a1a2e 100%);
             padding: 1.5rem 0;
             text-align: center;
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
+            border-bottom: 4px solid var(--accent-cyan);
+            box-shadow: 0 4px 20px rgba(0, 240, 255, 0.15);
         }
 
         header h1 {
             margin: 0;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            color: #000000;
+            color: #ffffff;
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
         }
 
         nav {
-            margin-top: 0.5rem;
+            margin-top: 0.8rem;
         }
 
         nav a {
-            margin: 0 1rem;
+            margin: 0 1.5rem;
             text-decoration: none;
-            color: #000000;
+            color: var(--text-main);
             font-weight: bold;
-            transition: color 0.2s;
+            font-size: 1.1rem;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
         }
 
         nav a:hover {
-            color: #0400ff;
+            color: var(--accent-cyan);
+            text-shadow: 0 0 8px var(--accent-cyan);
         }
 
         iframe {
             flex: 1;
             border: none;
             width: 100%;
-            height: calc(100vh - 110px); 
-            margin-top: 110px;
+            height: calc(100vh - 120px); 
+            margin-top: 120px;
+            background-color: var(--card-bg);
         }
 
         footer {
             text-align: center;
-            padding: 1rem;
-            color: rgb(123, 119, 119);
-            font-size: 16px;
+            padding: 1.5rem;
+            color: var(--text-muted);
+            font-size: 1rem;
             font-family: cursive;
-            background-color: hsl(0, 4%, 33%);
+            background-color: #030307;
+            border-top: 1px solid rgba(0, 240, 255, 0.1);
         }
     </style>
 </head>

@@ -5,31 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vaibhav Satish - Projects</title>
     <style>
+        :root {
+            --bg-color: #05050a;
+            --card-bg: #12121f;
+            --accent-blue: #0800ff;
+            --accent-cyan: #00f0ff;
+            --text-main: #f0f0f5;
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --border-glow: rgba(0, 240, 255, 0.4);
+        }
+
         html, body {
             height: 100%;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
-            text-align: center;
-        }
-        body {
-            background-color: #000000;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-                'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
         }
 
         header {
-            padding: 2rem 0;
-            background-color: #fff;
-            border-bottom: 15px solid #0800ff;
+            padding: 3rem 1rem;
+            background: linear-gradient(135deg, #0b0b16 0%, #1a1a2e 100%);
+            border-bottom: 4px solid var(--accent-cyan);
+            box-shadow: 0 4px 20px rgba(0, 240, 255, 0.15);
             text-align: center;
         }
 
         header h1 {
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            color: #000000;
-            margin: 0;
+            color: #ffffff;
+            font-size: 2.8rem;
+            margin: 0 0 1rem 0;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
         }
 
         nav {
@@ -38,75 +50,125 @@
         }
 
         nav a {
-            margin: 0 1rem;
+            margin: 0 1.5rem;
             text-decoration: none;
-            color: #000000;
+            color: var(--text-main);
             font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
         }
 
         nav a:hover {
-            color: #0044ff;
-        }
-
-        p a{
-            color: rgb(0, 21, 255); 
+            color: var(--accent-cyan);
+            text-shadow: 0 0 8px var(--accent-cyan);
         }
 
         main {
-            max-width: 800px;
-            margin: auto;
+            max-width: 1000px;
+            width: 90%;
+            margin: 3rem auto;
             padding: 1rem;
             flex: 1;
         }
 
+        .intro-text {
+            color: var(--text-main);
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+            margin-bottom: 3rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border: 2px solid var(--accent-cyan);
+            border-radius: 16px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 240, 255, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 240, 255, 0.3);
+        }
+
+        .project-title {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-cyan);
+            text-shadow: 0 0 5px rgba(0, 240, 255, 0.3);
+        }
+
+        .project-description {
+            color: #dcdce6;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .project-description a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s ease;
+        }
+
+        .project-description a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0, 240, 255, 0.15);
+        }
+
+        .badge {
+            background-color: rgba(0, 240, 255, 0.1);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
         footer {
-            background-color: #000000;
-            bottom: 0;
-            left: 0;
+            background-color: #030307;
             width: 100%;
             text-align: center;
-            padding: 2rem;
+            padding: 2.5rem 0;
             font-family: cursive;
-            color: rgba(255, 255, 255, 0.565);
-            font-size: 18px;
-        }
-
-        .dropdown {
-            border: 5px solid aqua;
-            border-radius: 100px;
-            margin-bottom: 50px;
-            overflow: hidden;
-            text-align: left;
-        }
-
-        .dropdown-header {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            padding: 15px;
-            font-weight: bold;
-            cursor: pointer;
-            background-color: #1100ff;
-            border-bottom: 5px solid aqua;
-            color: rgb(255, 255, 255);
-            user-select: none;
-            text-align: center;
-            font-size: 20px;
-        }
-
-        .dropdown-content {
-            max-height: 0;
-            overflow: hidden;
-            padding: 0 10px;
-            background-color: white;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-            color: #000;
-        }
-
-        .dropdown-content.open {
-            padding: 40px;
-        }
-        b {
-            color:rgb(255, 255, 255);
-            font-size: 18px;
+            color: var(--text-muted);
+            font-size: 1rem;
+            border-top: 1px solid rgba(0, 240, 255, 0.1);
         }
     </style>
 </head>
@@ -122,35 +184,79 @@
 </header>
 
 <main>
-    <b> Click each project get more information!
-    </b>
+    <div class="intro-text">
+        <b>Explore my engineering and development portfolio below!</b>
+    </div>
     <hr>
-    <div class="dropdown">
-        <div class="dropdown-header">UCI Themed Geoguessr</div>
-        <div class="dropdown-content">
-            <p>This is a campus-themed version of the game Geoguessr, featuring locations from the University of California, Irvine. Go to this <a href = "https://github.com/SatishVaibhav/UCIGeoGuesser">link</a> to learn more! </p>
+
+    <div class="projects-grid">
+        <div class="project-card">
+            <div class="project-title">UCI Themed Geoguessr</div>
+            <div class="project-description">
+                A cutting-edge, campus-themed version of the popular game Geoguessr featuring immersive locations across the University of California, Irvine. Led a 4-person engineering team from system architecture ideation through production deployment, managing rigorous Git workflows. Implemented custom mathematical scoring algorithms and integrated OpenStreetMap APIs to ensure sub-second asset rendering. Architected a high-performance, asynchronous C++ backend using the Crow API to minimize gameplay latency and seamlessly handle concurrent state updates. Explore the codebase at this <a href="https://github.com/VaibhavSatish/UCIGeoGuesser">link</a>!
+            </div>
+            <div class="badge-container">
+                <span class="badge">React</span>
+                <span class="badge">Node.js</span>
+                <span class="badge">TypeScript</span>
+                <span class="badge">C++</span>
+                <span class="badge">Crow API</span>
+                <span class="badge">Vercel</span>
+                <span class="badge">Leaflet</span>
+                <span class="badge">Docker</span>
+            </div>
         </div>
-    </div>
 
-    <div class="dropdown">
-        <div class="dropdown-header">Portfolio Website</div>
-        <div class="dropdown-content">
-            <p>A fully responsive personal portfolio showcasing my projects, resume, and contact details. If you're reading this then you've made it to my website successfully!</p>
+        <div class="project-card">
+            <div class="project-title">Portfolio Website</div>
+            <div class="project-description">
+                A fully responsive, highly-styled personal portfolio engineered from scratch to showcase advanced frontend capabilities, clean component architecture, and seamless interactive UX. Features custom dark-mode aesthetics, fluid transitions, and accessible design principles. If you're reading this, you've successfully navigated into the live production environment!
+            </div>
+            <div class="badge-container">
+                <span class="badge">HTML</span>
+                <span class="badge">CSS</span>
+                <span class="badge">JavaScript</span>
+                <span class="badge">Responsive Design</span>
+            </div>
         </div>
-    </div>
 
-    <div class="dropdown">
-        <div class="dropdown-header">Mage Runner</div>
-        <div class="dropdown-content">
-            <p>A multi level, interactive game where the player must make it through a complex maze, while facing several obstacles through each twist and turn. Go to this <a href = "https://github.com/FaCiLeXp/PVE-FPS-B/tree/main/PVE%20FPS%20B">link</a> to find out more about the game!</p>
+        <div class="project-card">
+            <div class="project-title">Mage Runner</div>
+            <div class="project-description">
+                An immersive multi-level, interactive game challenging players to navigate an intricate, complex maze filled with dynamic obstacles, shifting pathways, and real-time physics interactions at every turn. Built with robust script architecture and optimized rendering pipelines. Discover more about the game mechanics at this <a href="https://github.com/FaCiLeXp/PVE-FPS-B/tree/main/PVE%20FPS%20B">link</a>!
+            </div>
+            <div class="badge-container">
+                <span class="badge">Unity</span>
+                <span class="badge">C#</span>
+                <span class="badge">Game Physics</span>
+            </div>
         </div>
-    </div>
 
+        <div class="project-card">
+            <div class="project-title">ZOTNest</div>
+            <div class="project-description">
+                A premier full-stack property search web application developed for UC Irvine's 2026 Irvine Hacks Hackathon, built to streamline housing discovery for over 30,000+ UCI students. Integrated the Leaflet map API to deliver seamless, real-time location mapping and interactive visual clustering of 30+ local properties. Engineered sophisticated multi-criteria filtering algorithms to compute dynamic, context-aware property recommendations based on custom user vector preferences. Developed an automated Python data ingestion pipeline to scrape and parse 500+ Google Maps reviews, converting unstructured text into qualitative UI insights. More at this <a href="https://github.com/VaibhavSatish/ZOTNest">link</a>
+            </div>
+            <div class="badge-container">
+                <span class="badge">React</span>
+                <span class="badge">Python</span>
+                <span class="badge">FastAPI</span>
+                <span class="badge">Leaflet</span>
+            </div>
+        </div>
 
-    <div class="dropdown">
-        <div class="dropdown-header">Project(Coming Soon)</div>
-        <div class="dropdown-content">
-            <p>*Coming Soon*</p>
+        <div class="project-card">
+            <div class="project-title">Driver Delineation</div>
+            <div class="project-description">
+                An advanced machine learning solution developed for UC Irvine's 2025 Datathon, engineered to accurately predict driver behavioral likelihood from high-dimensional datasets. Executed rigorous feature engineering and selection protocols across 40+ impact variables to systematically mitigate model overfitting and maximize predictive generalizability. Designed, trained, and optimized a multi-layer Deep Neural Network (DNN) in TensorFlow, carefully tuning core hyper-parameters to achieve an exceptional 90% validation accuracy. More at this <a href="https://github.com/sidsun1/DriverDelineation">link</a>
+            </div>
+            <div class="badge-container">
+                <span class="badge">Python</span>
+                <span class="badge">PyTorch</span>
+                <span class="badge">TensorFlow</span>
+                <span class="badge">Scikit-Learn</span>
+                <span class="badge">NumPy</span>
+            </div>
         </div>
     </div>
 </main>
@@ -159,25 +265,5 @@
     &copy; 2025 Vaibhav Satish
 </footer>
 
-<script>
-    document.querySelectorAll('.dropdown-header').forEach(header => {
-        header.addEventListener('click', () => {
-            const content = header.nextElementSibling;
-            const isOpen = content.classList.contains('open');
-
-            document.querySelectorAll('.dropdown-content').forEach(c => {
-                c.style.maxHeight = null;
-                c.classList.remove('open');
-            });
-
-            if (!isOpen) {
-                content.classList.add('open');
-                content.style.maxHeight = content.scrollHeight + 'px';
-            }
-        });
-    });
-</script>
-
 </body>
 </html>
-    

@@ -5,66 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vaibhav Satish - Portfolio</title>
     <style>
+        :root {
+            --bg-color: #05050a;
+            --card-bg: rgba(18, 18, 31, 0.85);
+            --accent-blue: #0800ff;
+            --accent-cyan: #00f0ff;
+            --text-main: #f0f0f5;
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --border-glow: rgba(0, 240, 255, 0.4);
+        }
+
         html, body {
-            height: 150%;
+            height: 100%;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             text-align: center;
         }
+
         body {
-            background-image: url("img.jpeg");
+            background-image: linear-gradient(rgba(5, 5, 10, 0.8), rgba(5, 5, 10, 0.8)), url("img.jpeg");
             background-size: cover;      
             background-position: center;    
             background-repeat: no-repeat; 
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
         }
 
         header {
-            padding: 2rem 0;
-            background-color: #fff;
-            border-bottom: 2px solid #ccc;
+            padding: 3rem 1rem;
+            background: linear-gradient(135deg, #0b0b16 0%, #1a1a2e 100%);
+            border-bottom: 15px solid var(--accent-blue);
+            box-shadow: 0 4px 20px rgba(0, 240, 255, 0.15);
             text-align: center;
-            border-color: #0800ff;
-            border-width: 15px;
         }
 
         header h1 {
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            color: #000000;
-            margin: 0;
+            color: #ffffff;
+            margin: 0 0 1rem 0;
             text-align: center;
+            font-size: 2.8rem;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+
+        header h1 u {
+            text-decoration: none;
+            border-bottom: 3px solid var(--accent-cyan);
+            padding-bottom: 4px;
         }
 
         footer {
+            background-color: #030307;
             bottom: 0;
             left: 0;
             width: 100%;
             text-align: center;
-            padding: 2rem;
+            padding: 2.5rem 0;
             font-family: cursive;
-            color:rgba(255, 255, 255, 0.565);
-            font-size: 18px;
+            color: var(--text-muted);
+            font-size: 1rem;
+            border-top: 1px solid rgba(0, 240, 255, 0.1);
         }
 
         main {
             max-width: 800px;
+            width: 90%;
             margin: auto;
-            padding: 1rem;
+            padding: 2rem 1rem;
             flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         p {
-            padding: 1rem;
-            color:#ffffff;
+            padding: 2.5rem;
+            color: var(--text-main);
+            background-color: var(--card-bg);
             border: solid;
-            border-color: aqua;
+            border-color: var(--accent-cyan);
             border-radius: 55px;
             text-align: center;
-            border-width: 5px;
+            border-width: 3px;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(0, 240, 255, 0.05);
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        p:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 240, 255, 0.25), inset 0 0 25px rgba(0, 240, 255, 0.1);
         }
 
         nav {
@@ -73,14 +109,17 @@
         }
 
         nav a {
-            margin: 0 1rem;
+            margin: 0 1.5rem;
             text-decoration: none;
-            color: #000000;
+            color: var(--text-main);
             font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
         }
 
         nav a:hover {
-            color: #0044ff;
+            color: var(--accent-cyan);
+            text-shadow: 0 0 8px var(--accent-cyan);
         }
     </style>
 </head>
@@ -106,4 +145,3 @@
     </footer>
 </body>
 </html>
-    

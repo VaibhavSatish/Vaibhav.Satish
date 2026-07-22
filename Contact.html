@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vaibhav Satish - Contact</title>
     <style>
+        :root {
+            --bg-color: #05050a;
+            --card-bg: rgba(18, 18, 31, 0.85);
+            --accent-blue: #0800ff;
+            --accent-cyan: #00f0ff;
+            --text-main: #f0f0f5;
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --border-glow: rgba(0, 240, 255, 0.4);
+        }
+
         html, body {
             height: 100%;
             width: 100%;
@@ -13,21 +23,26 @@
             display: flex;
             flex-direction: column;
             text-align: center;
-            background-color: black;
+            background-color: var(--bg-color);
+            color: var(--text-main);
             font-family: 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
 
         header {
-            padding: 2rem 0;
-            background-color: #fff;
-            border-bottom: 10px solid #0800ff;
+            padding: 3rem 1rem;
+            background: linear-gradient(135deg, #0b0b16 0%, #1a1a2e 100%);
+            border-bottom: 10px solid var(--accent-blue);
+            box-shadow: 0 4px 20px rgba(0, 240, 255, 0.15);
             text-align: center;
         }
 
         header h1 {
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            color: #000;
-            margin: 0;
+            color: #ffffff;
+            margin: 0 0 1rem 0;
+            font-size: 2.8rem;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
         }
 
         nav {
@@ -35,19 +50,22 @@
         }
 
         nav a {
-            margin: 0 1rem;
+            margin: 0 1.5rem;
             text-decoration: none;
-            color: #000;
+            color: var(--text-main);
             font-weight: bold;
-            transition: color 0.3s ease;
+            font-size: 1.1rem;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
         }
 
         nav a:hover {
-            color: #0044ff;
+            color: var(--accent-cyan);
+            text-shadow: 0 0 8px var(--accent-cyan);
         }
 
         main {
             max-width: 800px;
+            width: 90%;
             margin: auto;
             padding: 2rem;
             flex: 1;
@@ -58,11 +76,11 @@
             max-width: 600px;
             margin: auto;
             border-collapse: collapse;
-            border: 5px solid #00ddff;
+            border: 3px solid var(--accent-cyan);
             border-radius: 15px;
             overflow: hidden;
-            background-color: white;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            background-color: var(--card-bg);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(0, 240, 255, 0.05);
             margin-top: 3px;
 
             opacity: 0;
@@ -78,34 +96,41 @@
 
         th {
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            background-color: #00ddff;
-            color: #000;
+            background: linear-gradient(90deg, #1100ff 0%, #1f12ff 100%);
+            color: #ffffff;
             font-size: 20px;
+            border-bottom: 3px solid var(--accent-cyan);
+        }
+
+        td {
+            color: var(--text-main);
         }
 
         td a {
-            color: #0800ff;
+            color: var(--accent-cyan);
             font-weight: bold;
             text-decoration: none;
             transition: color 0.3s ease, transform 0.2s ease;
         }
 
         td a:hover {
-            color: #00ddff;
+            color: #ffffff;
             transform: scale(1.05);
         }
 
         tr:nth-child(even) td {
-            background-color: #f2f2f27d;
+            background-color: rgba(255, 255, 255, 0.03);
         }
 
-        img {
+        img.profile-pic {
             border-style: solid;
-            border-width: 10px;
-            border-color: rgb(0, 26, 255);
-            border-radius: 680px;
+            border-width: 5px;
+            border-color: var(--accent-cyan);
+            border-radius: 50%;
+            object-fit: cover;
             display: block;
             margin: 30px auto 0 auto;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
             opacity: 0;
             transform: translateY(-30px);
             animation: fadeSlideDown 1s ease forwards;
@@ -118,10 +143,11 @@
                 max-width: 600px;
                 margin-left: auto;
                 margin-right: auto;
-                background-color: #231f48;
+                background-color: var(--card-bg);
                 padding: 2rem;
                 border-radius: 15px;
-                box-shadow: 0 4px 12px rgba(255, 0, 0, 0.5);
+                border: 2px solid var(--accent-cyan);
+                box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(0, 240, 255, 0.05);
 
                 opacity: 0;
                 transform: translateY(30px);
@@ -130,39 +156,50 @@
         }
 
         form label {
-                color: #fff;
+                color: var(--text-main);
                 font-weight: bold;
                 display: block; 
                 margin-bottom: 5px;
+                text-align: left;
+                margin-left: 10%;
         }
 
         form input, form textarea {
                 width: 80%;          
-                padding: 10px;
+                padding: 12px;
                 margin: 0 auto 15px auto; 
                 border-radius: 8px;
-                border: 1px solid #00ddff;
-                background-color: #222;
+                border: 1px solid var(--accent-cyan);
+                background-color: #0b0b16;
                 color: #fff;
                 display: block;
                 resize: none;  
         }
 
+        form input:focus, form textarea:focus {
+                outline: none;
+                border-color: #ffffff;
+                box-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
+        }
+
         form button {
-                padding: 10px 20px;
+                padding: 12px 25px;
                 border: none;
                 border-radius: 10px;
-                background: #0800ff;
+                background: linear-gradient(90deg, #1100ff 0%, #1f12ff 100%);
                 color: white;
                 font-weight: bold;
                 cursor: pointer;
-                transition: background 0.3s ease;
+                border: 1px solid var(--accent-cyan);
+                transition: background 0.3s ease, transform 0.2s ease;
                 display: block;
                 margin: 0 auto;
         }
 
         form button:hover {
-                background: #00ddff;
+                background: var(--accent-cyan);
+                color: #000;
+                transform: translateY(-2px);
         }
 
         .social-links {
@@ -171,34 +208,50 @@
             transform: translateY(30px);
             animation: fadeSlideUp 1s ease forwards;
             animation-delay: 0.8s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
         }
 
         .social-links a {
-            margin: 0 1rem;
-            color: #00ddff;
-            font-weight: bold;
-            text-decoration: none;
-            transition: transform 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+
+        .social-links a img {
+            width: 36px;
+            height: 36px;
+            filter: drop-shadow(0 0 5px rgba(0, 240, 255, 0.4));
+            transition: filter 0.2s ease;
         }
 
         .social-links a:hover {
             transform: scale(1.2);
-            color: #ffffff;
+        }
+
+        .social-links a:hover img {
+            filter: drop-shadow(0 0 10px var(--accent-cyan));
         }
 
         h3 {
-            color: white;
+            color: var(--text-main);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
         }
 
         footer {
+            background-color: #030307;
             bottom: 0;
             left: 0;
             width: 100%;
             text-align: center;
-            padding: 2rem;
+            padding: 2.5rem 0;
             font-family: cursive;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 18px;
+            color: var(--text-muted);
+            font-size: 1rem;
+            border-top: 1px solid rgba(0, 240, 255, 0.1);
         }
 
         @keyframes fadeSlideUp {
@@ -235,7 +288,7 @@
         </nav>
     </header>
 
-    <img src="IMG_3762.png" alt="Profile Picture" width="300" height="400">
+    <img class="profile-pic" src="IMG_3762.jpg" alt="Profile Picture" width="300" height="300">
 
     <main>
         <table>
@@ -248,11 +301,11 @@
                 <td><a href="mailto:Vaibhavsatish21@hotmail.com">Vaibhavsatish21@hotmail.com</a></td> -->
             </tr>
         </table>
-        <hr>
+        <hr style="border: none; height: 1px; background: rgba(0,240,255,0.2); margin: 2rem 0;">
         <h3>
             !Use the form first and wait 24 hours!
         </h3>
-        <hr>
+        <hr style="border: none; height: 1px; background: rgba(0,240,255,0.2); margin: 2rem 0;">
         <form action="https://formspree.io/f/xldlkyyo" method="post">
             <label for="name">Name:</label><br>
             <input type="text" id="name" name="name" required><br>
@@ -265,7 +318,7 @@
 
             <button type="submit">Send Message</button>
         </form>
-        <div id="form-success" style="color:#00ddff; margin-top:1rem; display:none;">
+        <div id="form-success" style="color:var(--accent-cyan); margin-top:1rem; display:none;">
             Thank you! Your message has been sent.
         </div>
         
@@ -290,9 +343,15 @@
         </script>
 
         <div class="social-links">
-            <a href="https://github.com/SatishVaibhav" target="_blank">Github</a>
-            <a href="https://www.linkedin.com/in/vaibhav-satish-796979278/" target="_blank">LinkedIn</a>
-            <a href="https://www.instagram.com/vaibhav_satish_/" target="_blank">Instagram</a>
+            <a href="https://github.com/VaibhavSatish" target="_blank" title="GitHub">
+                <img src="https://api.iconify.design/mdi:github.svg?color=%2300f0ff" alt="GitHub Logo">
+            </a>
+            <a href="https://www.linkedin.com/in/vaibhav-adithya-satish" target="_blank" title="LinkedIn">
+                <img src="https://api.iconify.design/mdi:linkedin.svg?color=%2300f0ff" alt="LinkedIn Logo">
+            </a>
+            <a href="https://www.instagram.com/vaibhav_satish_/" target="_blank" title="Instagram">
+                <img src="https://api.iconify.design/mdi:instagram.svg?color=%2300f0ff" alt="Instagram Logo">
+            </a>
         </div>
     </main>
 
