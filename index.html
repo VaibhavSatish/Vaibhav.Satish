@@ -6,13 +6,15 @@
     <title>Vaibhav Satish - Portfolio</title>
     <style>
         :root {
-            --bg-color: #05050a;
-            --card-bg: rgba(18, 18, 31, 0.45); /* See-through card */
-            --accent-blue: #0800ff;
-            --accent-cyan: #00f0ff;
-            --text-main: #f0f0f5;
-            --text-muted: rgba(255, 255, 255, 0.6);
-            --border-glow: rgba(0, 240, 255, 0.4);
+            --bg-color: #090a0f;
+            --header-bg: #0d0e15;
+            --card-bg: rgba(20, 21, 33, 0.25); 
+            --accent-primary: #00ff88;
+            --accent-glow: rgba(0, 255, 136, 0.2);
+            --text-main: #ededf4;
+            --text-muted: #8c8fa3;
+            --border-color: rgba(255, 255, 255, 0.12);
+            --border-glow: rgba(0, 255, 136, 0.4);
         }
 
         html, body {
@@ -25,54 +27,50 @@
         }
 
         body {
-            background-image: linear-gradient(rgba(5, 5, 10, 0.6), rgba(5, 5, 10, 0.6)), url("img.jpeg");
-            background-size: 85vw; /* Adjusted to be much larger, fitting nicely across the screen */
-            background-position: center;    
-            background-repeat: no-repeat; 
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
         }
 
         header {
-            padding: 3rem 1rem;
-            background: linear-gradient(135deg, #0b0b16 0%, #1a1a2e 100%);
-            border-bottom: 15px solid var(--accent-blue);
-            box-shadow: 0 4px 20px rgba(0, 240, 255, 0.15);
+            padding: 2.5rem 1rem;
+            background: var(--header-bg);
+            border-bottom: 2px solid var(--border-color);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
             text-align: center;
         }
 
         header h1 {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            color: #ffffff;
+            font-family: inherit;
+            color: var(--text-main);
             margin: 0 0 1rem 0;
             text-align: center;
-            font-size: 2.8rem;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
         header h1 u {
             text-decoration: none;
-            border-bottom: 3px solid var(--accent-cyan);
+            border-bottom: 2px solid var(--accent-primary);
             padding-bottom: 4px;
         }
 
         footer {
-            background-color: #030307;
+            background-color: var(--header-bg);
             bottom: 0;
             left: 0;
             width: 100%;
             text-align: center;
-            padding: 2.5rem 0;
-            font-family: cursive;
+            padding: 2rem 0;
+            font-family: inherit;
             color: var(--text-muted);
-            font-size: 1rem;
-            border-top: 1px solid rgba(0, 240, 255, 0.1);
+            font-size: 0.95rem;
+            border-top: 1px solid var(--border-color);
         }
 
         main {
-            max-width: 800px;
+            max-width: 900px;
             width: 90%;
             margin: auto;
             padding: 2rem 1rem;
@@ -82,25 +80,71 @@
             justify-content: center;
         }
 
+        .hero-container {
+            position: relative;
+            width: 100%;
+            max-width: 750px;
+            padding: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 135%;
+            height: 135%;
+            background-image: url("img.jpeg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: brightness(0.6) blur(2px);
+            z-index: -1;
+            border-radius: 35px;
+        }
+
         p {
+            margin: 0;
             padding: 2.5rem;
             color: var(--text-main);
             background-color: var(--card-bg);
-            border: solid;
-            border-color: var(--accent-cyan);
-            border-radius: 55px;
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
             text-align: center;
-            border-width: 3px;
-            font-size: 1.2rem;
-            line-height: 1.6;
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(0, 240, 255, 0.05);
-            backdrop-filter: blur(8px);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-size: 1.15rem;
+            line-height: 1.7;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(6px);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        p:hover {
+        .hero-container:hover p {
             transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(0, 240, 255, 0.25), inset 0 0 25px rgba(0, 240, 255, 0.1);
+            border-color: var(--border-glow);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 25px var(--accent-glow);
+        }
+
+        /* Keep words intact during line wrapping */
+        .word {
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        /* Fade-in animation for each individual character inside words */
+        .char {
+            opacity: 0;
+            display: inline-block;
+            animation: fadeInChar 0.05s forwards;
+        }
+
+        @keyframes fadeInChar {
+            to {
+                opacity: 1;
+            }
         }
 
         nav {
@@ -109,17 +153,16 @@
         }
 
         nav a {
-            margin: 0 1.5rem;
+            margin: 0 1.2rem;
             text-decoration: none;
-            color: var(--text-main);
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.2s ease;
         }
 
         nav a:hover {
-            color: var(--accent-cyan);
-            text-shadow: 0 0 8px var(--accent-cyan);
+            color: var(--accent-primary);
         }
     </style>
 </head>
@@ -135,13 +178,61 @@
     </header>
 
     <main>
-        <p>
-            Yo! Welcome to my website! I'm a Computer Science student at UC Irvine specializing in Intelligent Systems. I built this website for
-            fun and to provide access to some of the cool things that I have built over the years.
-        </p>
+        <div class="hero-container">
+            <p id="typing-target"></p>
+        </div>
     </main>
+    
     <footer>
         &copy; 2025 Vaibhav Satish
     </footer>
+
+    <script>
+        const text = "Welcome  to my website! I'm a Computer Science student at UC Irvine specializing in Intelligent Systems. I built this website for fun and to provide access to some of the cool things that I have built over the years.";
+        
+        const target = document.getElementById("typing-target");
+        
+        // Split text by words while keeping spaces attached properly
+        const words = text.split(" ");
+        let wordIndex = 0;
+        let charIndex = 0;
+
+        function typeWriter() {
+            if (wordIndex < words.length) {
+                let currentWord = words[wordIndex];
+                
+                // If it's the first character of the word, create a word container span
+                if (charIndex === 0) {
+                    const wordSpan = document.createElement("span");
+                    wordSpan.className = "word";
+                    wordSpan.id = "word-" + wordIndex;
+                    target.appendChild(wordSpan);
+                    
+                    // Add a space before the word (except for the very first word)
+                    if (wordIndex > 0) {
+                        target.appendChild(document.createTextNode(" "));
+                    }
+                }
+
+                const wordSpan = document.getElementById("word-" + wordIndex);
+                const charSpan = document.createElement("span");
+                charSpan.className = "char";
+                charSpan.textContent = currentWord.charAt(charIndex);
+                wordSpan.appendChild(charSpan);
+
+                charIndex++;
+
+                // Move to the next word once the current word is fully typed out
+                if (charIndex >= currentWord.length) {
+                    wordIndex++;
+                    charIndex = 0;
+                }
+
+                setTimeout(typeWriter, 25);
+            }
+        }
+
+        window.onload = typeWriter;
+    </script>
 </body>
 </html>

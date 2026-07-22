@@ -6,13 +6,15 @@
     <title>Vaibhav Satish - Contact</title>
     <style>
         :root {
-            --bg-color: #05050a;
-            --card-bg: rgba(18, 18, 31, 0.85);
-            --accent-blue: #0800ff;
-            --accent-cyan: #00f0ff;
-            --text-main: #f0f0f5;
-            --text-muted: rgba(255, 255, 255, 0.6);
-            --border-glow: rgba(0, 240, 255, 0.4);
+            --bg-color: #090a0f;
+            --header-bg: #0d0e15;
+            --card-bg: rgba(20, 21, 33, 0.65);
+            --accent-primary: #00ff88;
+            --accent-glow: rgba(0, 255, 136, 0.2);
+            --text-main: #ededf4;
+            --text-muted: #8c8fa3;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(0, 255, 136, 0.3);
         }
 
         html, body {
@@ -25,24 +27,24 @@
             text-align: center;
             background-color: var(--bg-color);
             color: var(--text-main);
-            font-family: 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         header {
-            padding: 3rem 1rem;
-            background: linear-gradient(135deg, #0b0b16 0%, #1a1a2e 100%);
-            border-bottom: 10px solid var(--accent-blue);
-            box-shadow: 0 4px 20px rgba(0, 240, 255, 0.15);
+            padding: 2.5rem 1rem;
+            background: var(--header-bg);
+            border-bottom: 2px solid var(--border-color);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
             text-align: center;
         }
 
         header h1 {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            color: #ffffff;
+            font-family: inherit;
+            color: var(--text-main);
             margin: 0 0 1rem 0;
-            font-size: 2.8rem;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
         nav {
@@ -50,17 +52,16 @@
         }
 
         nav a {
-            margin: 0 1.5rem;
+            margin: 0 1.2rem;
             text-decoration: none;
-            color: var(--text-main);
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.2s ease;
         }
 
         nav a:hover {
-            color: var(--accent-cyan);
-            text-shadow: 0 0 8px var(--accent-cyan);
+            color: var(--accent-primary);
         }
 
         main {
@@ -76,11 +77,12 @@
             max-width: 600px;
             margin: auto;
             border-collapse: collapse;
-            border: 3px solid var(--accent-cyan);
-            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
             overflow: hidden;
             background-color: var(--card-bg);
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(0, 240, 255, 0.05);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
             margin-top: 3px;
 
             opacity: 0;
@@ -95,42 +97,43 @@
         }
 
         th {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            background: linear-gradient(90deg, #1100ff 0%, #1f12ff 100%);
-            color: #ffffff;
-            font-size: 20px;
-            border-bottom: 3px solid var(--accent-cyan);
+            font-family: inherit;
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-main);
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-color);
         }
 
         td {
-            color: var(--text-main);
+            color: var(--text-muted);
         }
 
         td a {
-            color: var(--accent-cyan);
-            font-weight: bold;
+            color: var(--accent-primary);
+            font-weight: 500;
             text-decoration: none;
-            transition: color 0.3s ease, transform 0.2s ease;
+            transition: opacity 0.2s ease;
         }
 
         td a:hover {
-            color: #ffffff;
-            transform: scale(1.05);
+            opacity: 0.8;
+            text-decoration: underline;
         }
 
         tr:nth-child(even) td {
-            background-color: rgba(255, 255, 255, 0.03);
+            background-color: rgba(255, 255, 255, 0.02);
         }
 
         img.profile-pic {
             border-style: solid;
-            border-width: 5px;
-            border-color: var(--accent-cyan);
+            border-width: 2px;
+            border-color: var(--border-color);
             border-radius: 50%;
             object-fit: cover;
             display: block;
             margin: 30px auto 0 auto;
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             opacity: 0;
             transform: translateY(-30px);
             animation: fadeSlideDown 1s ease forwards;
@@ -145,9 +148,10 @@
                 margin-right: auto;
                 background-color: var(--card-bg);
                 padding: 2rem;
-                border-radius: 15px;
-                border: 2px solid var(--accent-cyan);
-                box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(0, 240, 255, 0.05);
+                border-radius: 20px;
+                border: 1px solid var(--border-color);
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(12px);
 
                 opacity: 0;
                 transform: translateY(30px);
@@ -156,8 +160,8 @@
         }
 
         form label {
-                color: var(--text-main);
-                font-weight: bold;
+                color: var(--text-muted);
+                font-weight: 500;
                 display: block; 
                 margin-bottom: 5px;
                 text-align: left;
@@ -168,37 +172,37 @@
                 width: 80%;          
                 padding: 12px;
                 margin: 0 auto 15px auto; 
-                border-radius: 8px;
-                border: 1px solid var(--accent-cyan);
-                background-color: #0b0b16;
-                color: #fff;
+                border-radius: 12px;
+                border: 1px solid var(--border-color);
+                background-color: rgba(13, 14, 21, 0.8);
+                color: var(--text-main);
                 display: block;
-                resize: none;  
+                resize: none;
+                font-family: inherit;  
         }
 
         form input:focus, form textarea:focus {
                 outline: none;
-                border-color: #ffffff;
-                box-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
+                border-color: var(--border-glow);
+                box-shadow: 0 0 15px var(--accent-glow);
         }
 
         form button {
                 padding: 12px 25px;
-                border: none;
-                border-radius: 10px;
-                background: linear-gradient(90deg, #1100ff 0%, #1f12ff 100%);
-                color: white;
-                font-weight: bold;
+                border-radius: 12px;
+                background-color: var(--accent-primary);
+                color: #090a0f;
+                font-weight: 600;
                 cursor: pointer;
-                border: 1px solid var(--accent-cyan);
-                transition: background 0.3s ease, transform 0.2s ease;
+                border: none;
+                transition: transform 0.2s ease, opacity 0.2s ease;
                 display: block;
                 margin: 0 auto;
+                font-family: inherit;
         }
 
         form button:hover {
-                background: var(--accent-cyan);
-                color: #000;
+                opacity: 0.9;
                 transform: translateY(-2px);
         }
 
@@ -218,40 +222,40 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.2s ease, filter 0.2s ease;
+            transition: transform 0.2s ease;
         }
 
         .social-links a img {
-            width: 36px;
-            height: 36px;
-            filter: drop-shadow(0 0 5px rgba(0, 240, 255, 0.4));
-            transition: filter 0.2s ease;
+            width: 32px;
+            height: 32px;
+            /* Tinting icons to match the emerald theme via CSS filter or using direct monochrome styling */
+            filter: invert(75%) sepia(30%) saturate(800%) hue-rotate(90deg) brightness(95%) contrast(100%);
+            transition: opacity 0.2s ease;
         }
 
         .social-links a:hover {
-            transform: scale(1.2);
+            transform: scale(1.15);
         }
 
         .social-links a:hover img {
-            filter: drop-shadow(0 0 10px var(--accent-cyan));
+            opacity: 0.8;
         }
 
         h3 {
             color: var(--text-main);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
         }
 
         footer {
-            background-color: #030307;
+            background-color: var(--header-bg);
             bottom: 0;
             left: 0;
             width: 100%;
             text-align: center;
-            padding: 2.5rem 0;
-            font-family: cursive;
+            padding: 2rem 0;
+            font-family: inherit;
             color: var(--text-muted);
-            font-size: 1rem;
-            border-top: 1px solid rgba(0, 240, 255, 0.1);
+            font-size: 0.95rem;
+            border-top: 1px solid var(--border-color);
         }
 
         @keyframes fadeSlideUp {
@@ -301,7 +305,7 @@
                 <td><a href="mailto:Vaibhavsatish21@hotmail.com">Vaibhavsatish21@hotmail.com</a></td> -->
             </tr>
         </table>
-        <hr style="border: none; height: 1px; background: rgba(0,240,255,0.2); margin: 2rem 0;">
+        <hr style="border: none; height: 1px; background: var(--border-color); margin: 2rem 0;">
         <form action="https://formspree.io/f/xldlkyyo" method="post">
             <label for="name">Name:</label><br>
             <input type="text" id="name" name="name" required><br>
@@ -314,7 +318,7 @@
 
             <button type="submit">Send Message</button>
         </form>
-        <div id="form-success" style="color:var(--accent-cyan); margin-top:1rem; display:none;">
+        <div id="form-success" style="color:var(--accent-primary); margin-top:1rem; display:none;">
             Thank you! Your message has been sent.
         </div>
         
@@ -340,13 +344,13 @@
 
         <div class="social-links">
             <a href="https://github.com/VaibhavSatish" target="_blank" title="GitHub">
-                <img src="https://api.iconify.design/mdi:github.svg?color=%2300f0ff" alt="GitHub Logo">
+                <img src="https://api.iconify.design/mdi:github.svg" alt="GitHub Logo">
             </a>
             <a href="https://www.linkedin.com/in/vaibhav-adithya-satish" target="_blank" title="LinkedIn">
-                <img src="https://api.iconify.design/mdi:linkedin.svg?color=%2300f0ff" alt="LinkedIn Logo">
+                <img src="https://api.iconify.design/mdi:linkedin.svg" alt="LinkedIn Logo">
             </a>
             <a href="https://www.instagram.com/vaibhav_satish_/" target="_blank" title="Instagram">
-                <img src="https://api.iconify.design/mdi:instagram.svg?color=%2300f0ff" alt="Instagram Logo">
+                <img src="https://api.iconify.design/mdi:instagram.svg" alt="Instagram Logo">
             </a>
         </div>
     </main>

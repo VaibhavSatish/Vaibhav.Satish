@@ -6,13 +6,15 @@
     <title>Vaibhav Satish - Projects</title>
     <style>
         :root {
-            --bg-color: #05050a;
-            --card-bg: #12121f;
-            --accent-blue: #0800ff;
-            --accent-cyan: #00f0ff;
-            --text-main: #f0f0f5;
-            --text-muted: rgba(255, 255, 255, 0.6);
-            --border-glow: rgba(0, 240, 255, 0.4);
+            --bg-color: #090a0f;
+            --header-bg: #0d0e15;
+            --card-bg: rgba(20, 21, 33, 0.65);
+            --accent-primary: #00ff88;
+            --accent-glow: rgba(0, 255, 136, 0.25);
+            --text-main: #ededf4;
+            --text-muted: #8c8fa3;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(0, 255, 136, 0.5);
         }
 
         html, body {
@@ -23,152 +25,200 @@
             flex-direction: column;
             background-color: var(--bg-color);
             color: var(--text-main);
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             scroll-behavior: smooth;
         }
 
         header {
-            padding: 3rem 1rem;
-            background: linear-gradient(135deg, #0b0b16 0%, #1a1a2e 100%);
-            border-bottom: 4px solid var(--accent-cyan);
-            box-shadow: 0 4px 20px rgba(0, 240, 255, 0.15);
+            padding: 3rem 1rem 2.5rem 1rem;
+            background: var(--header-bg);
+            border-bottom: 2px solid var(--border-color);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
             text-align: center;
+            position: relative;
+        }
+
+        /* Ambient glow behind header title */
+        header::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 250px;
+            height: 60px;
+            background: var(--accent-primary);
+            filter: blur(65px);
+            opacity: 0.15;
+            z-index: 0;
+            pointer-events: none;
         }
 
         header h1 {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            color: #ffffff;
+            position: relative;
+            z-index: 1;
+            font-family: inherit;
+            color: var(--text-main);
             font-size: 2.8rem;
+            font-weight: 700;
             margin: 0 0 1rem 0;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+            letter-spacing: -0.5px;
         }
 
         nav {
+            position: relative;
+            z-index: 1;
             text-align: center;
             margin-top: 1rem;
         }
 
         nav a {
-            margin: 0 1.5rem;
+            margin: 0 1.2rem;
             text-decoration: none;
-            color: var(--text-main);
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.2s ease, text-shadow 0.2s ease;
         }
 
         nav a:hover {
-            color: var(--accent-cyan);
-            text-shadow: 0 0 8px var(--accent-cyan);
+            color: var(--accent-primary);
+            text-shadow: 0 0 10px var(--accent-glow);
         }
 
         main {
-            max-width: 1000px;
+            max-width: 1050px;
             width: 90%;
-            margin: 3rem auto;
+            margin: 3.5rem auto;
             padding: 1rem;
             flex: 1;
         }
 
         .intro-text {
-            color: var(--text-main);
-            font-size: 1.2rem;
-            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            letter-spacing: -0.2px;
             margin-bottom: 2rem;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
             text-align: center;
+        }
+
+        .intro-text b {
+            color: var(--text-main);
         }
 
         hr {
             border: none;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
-            margin-bottom: 3rem;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+            margin-bottom: 3.5rem;
         }
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
         .project-card {
             background-color: var(--card-bg);
-            border: 2px solid var(--accent-cyan);
-            border-radius: 16px;
-            padding: 25px;
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 30px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(0, 240, 255, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            justify-content: flex-start;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+            
+            /* Staggered load animation */
+            opacity: 0;
+            transform: translateY(20px);
+            animation: cardEntrance 0.6s ease forwards;
+        }
+
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.2s; }
+        .project-card:nth-child(3) { animation-delay: 0.3s; }
+        .project-card:nth-child(4) { animation-delay: 0.4s; }
+        .project-card:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes cardEntrance {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0, 240, 255, 0.3);
+            transform: translateY(-6px);
+            border-color: var(--border-glow);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px var(--accent-glow), inset 0 1px 0 rgba(0, 255, 136, 0.3);
         }
 
         .project-title {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-family: inherit;
             font-size: 1.4rem;
-            font-weight: bold;
-            color: #ffffff;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--accent-cyan);
-            text-shadow: 0 0 5px rgba(0, 240, 255, 0.3);
-        }
-
-        .project-description {
-            color: #dcdce6;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-
-        .project-description a {
-            color: var(--accent-cyan);
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.2s ease;
-        }
-
-        .project-description a:hover {
-            color: #ffffff;
-            text-decoration: underline;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
         }
 
         .badge-container {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
-            margin-top: auto;
-            padding-top: 15px;
-            border-top: 1px solid rgba(0, 240, 255, 0.15);
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .badge {
-            background-color: rgba(0, 240, 255, 0.1);
-            color: var(--accent-cyan);
-            border: 1px solid rgba(0, 240, 255, 0.3);
-            padding: 3px 10px;
+            background-color: rgba(0, 255, 136, 0.05);
+            color: var(--accent-primary);
+            border: 1px solid rgba(0, 255, 136, 0.15);
+            padding: 4px 10px;
             border-radius: 20px;
             font-size: 0.75rem;
-            font-weight: bold;
+            font-weight: 500;
+            transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .badge:hover {
+            background-color: rgba(0, 255, 136, 0.15);
+            border-color: var(--accent-primary);
+            transform: translateY(-2px);
+        }
+
+        .project-description {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            flex-grow: 1;
+        }
+
+        .project-description a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .project-description a:hover {
+            text-shadow: 0 0 8px var(--accent-glow);
+            text-decoration: underline;
         }
 
         footer {
-            background-color: #030307;
+            background-color: var(--header-bg);
             width: 100%;
             text-align: center;
             padding: 2.5rem 0;
-            font-family: cursive;
+            font-family: inherit;
             color: var(--text-muted);
-            font-size: 1rem;
-            border-top: 1px solid rgba(0, 240, 255, 0.1);
+            font-size: 0.95rem;
+            border-top: 1px solid var(--border-color);
         }
     </style>
 </head>
@@ -192,9 +242,6 @@
     <div class="projects-grid">
         <div class="project-card">
             <div class="project-title">UCI Themed Geoguessr</div>
-            <div class="project-description">
-                A cutting-edge, campus-themed version of the popular game Geoguessr featuring immersive locations across the University of California, Irvine. Led a 4-person engineering team from system architecture ideation through production deployment, managing rigorous Git workflows. Implemented custom mathematical scoring algorithms and integrated OpenStreetMap APIs to ensure sub-second asset rendering. Architected a high-performance, asynchronous C++ backend using the Crow API to minimize gameplay latency and seamlessly handle concurrent state updates. Explore the codebase at this <a href="https://github.com/VaibhavSatish/UCIGeoGuesser">link</a>!
-            </div>
             <div class="badge-container">
                 <span class="badge">React</span>
                 <span class="badge">Node.js</span>
@@ -205,57 +252,60 @@
                 <span class="badge">Leaflet</span>
                 <span class="badge">Docker</span>
             </div>
+            <div class="project-description">
+                A cutting-edge, campus-themed version of the popular game Geoguessr featuring immersive locations across the University of California, Irvine. Led a 4-person engineering team from system architecture ideation through production deployment, managing rigorous Git workflows. Implemented custom mathematical scoring algorithms and integrated OpenStreetMap APIs to ensure sub-second asset rendering. Architected a high-performance, asynchronous C++ backend using the Crow API to minimize gameplay latency and seamlessly handle concurrent state updates. Explore the codebase at this <a href="https://github.com/VaibhavSatish/UCIGeoGuesser" target="_blank">link</a>!
+            </div>
         </div>
 
         <div class="project-card">
             <div class="project-title">Portfolio Website</div>
-            <div class="project-description">
-                A fully responsive, highly-styled personal portfolio engineered from scratch to showcase advanced frontend capabilities, clean component architecture, and seamless interactive UX. Features custom dark-mode aesthetics, fluid transitions, and accessible design principles. If you're reading this, you've successfully navigated into the live production environment!
-            </div>
             <div class="badge-container">
                 <span class="badge">HTML</span>
                 <span class="badge">CSS</span>
                 <span class="badge">JavaScript</span>
                 <span class="badge">Responsive Design</span>
             </div>
+            <div class="project-description">
+                A fully responsive, highly-styled personal portfolio engineered from scratch to showcase advanced frontend capabilities, clean component architecture, and seamless interactive UX. Features custom dark-mode aesthetics, fluid transitions, and accessible design principles. If you're reading this, you've successfully navigated into the live production environment!
+            </div>
         </div>
 
         <div class="project-card">
             <div class="project-title">Mage Runner</div>
-            <div class="project-description">
-                An immersive multi-level, interactive game challenging players to navigate an intricate, complex maze filled with dynamic obstacles, shifting pathways, and real-time physics interactions at every turn. Built with robust script architecture and optimized rendering pipelines. Discover more about the game mechanics at this <a href="https://github.com/FaCiLeXp/PVE-FPS-B/tree/main/PVE%20FPS%20B">link</a>!
-            </div>
             <div class="badge-container">
                 <span class="badge">Unity</span>
                 <span class="badge">C#</span>
                 <span class="badge">Game Physics</span>
             </div>
+            <div class="project-description">
+                An immersive multi-level, interactive game challenging players to navigate an intricate, complex maze filled with dynamic obstacles, shifting pathways, and real-time physics interactions at every turn. Built with robust script architecture and optimized rendering pipelines. Discover more about the game mechanics at this <a href="https://github.com/FaCiLeXp/PVE-FPS-B/tree/main/PVE%20FPS%20B" target="_blank">link</a>!
+            </div>
         </div>
 
         <div class="project-card">
             <div class="project-title">ZOTNest</div>
-            <div class="project-description">
-                A premier full-stack property search web application developed for UC Irvine's 2026 Irvine Hacks Hackathon, built to streamline housing discovery for over 30,000+ UCI students. Integrated the Leaflet map API to deliver seamless, real-time location mapping and interactive visual clustering of 30+ local properties. Engineered sophisticated multi-criteria filtering algorithms to compute dynamic, context-aware property recommendations based on custom user vector preferences. Developed an automated Python data ingestion pipeline to scrape and parse 500+ Google Maps reviews, converting unstructured text into qualitative UI insights. More at this <a href="https://github.com/VaibhavSatish/ZOTNest">link</a>
-            </div>
             <div class="badge-container">
                 <span class="badge">React</span>
                 <span class="badge">Python</span>
                 <span class="badge">FastAPI</span>
                 <span class="badge">Leaflet</span>
             </div>
+            <div class="project-description">
+                A premier full-stack property search web application developed for UC Irvine's 2026 Irvine Hacks Hackathon, built to streamline housing discovery for over 30,000+ UCI students. Integrated the Leaflet map API to deliver seamless, real-time location mapping and interactive visual clustering of 30+ local properties. Engineered sophisticated multi-criteria filtering algorithms to compute dynamic, context-aware property recommendations based on custom user vector preferences. Developed an automated Python data ingestion pipeline to scrape and parse 500+ Google Maps reviews, converting unstructured text into qualitative UI insights. More at this <a href="https://github.com/VaibhavSatish/ZOTNest" target="_blank">link</a>
+            </div>
         </div>
 
         <div class="project-card">
             <div class="project-title">Driver Delineation</div>
-            <div class="project-description">
-                An advanced machine learning solution developed for UC Irvine's 2025 Datathon, engineered to accurately predict driver behavioral likelihood from high-dimensional datasets. Executed rigorous feature engineering and selection protocols across 40+ impact variables to systematically mitigate model overfitting and maximize predictive generalizability. Designed, trained, and optimized a multi-layer Deep Neural Network (DNN) in TensorFlow, carefully tuning core hyper-parameters to achieve an exceptional 90% validation accuracy. More at this <a href="https://github.com/sidsun1/DriverDelineation">link</a>
-            </div>
             <div class="badge-container">
                 <span class="badge">Python</span>
                 <span class="badge">PyTorch</span>
                 <span class="badge">TensorFlow</span>
                 <span class="badge">Scikit-Learn</span>
                 <span class="badge">NumPy</span>
+            </div>
+            <div class="project-description">
+                An advanced machine learning solution developed for UC Irvine's 2025 Datathon, engineered to accurately predict driver behavioral likelihood from high-dimensional datasets. Executed rigorous feature engineering and selection protocols across 40+ impact variables to systematically mitigate model overfitting and maximize predictive generalizability. Designed, trained, and optimized a multi-layer Deep Neural Network (DNN) in TensorFlow, carefully tuning core hyper-parameters to achieve an exceptional 90% validation accuracy. More at this <a href="https://github.com/sidsun1/DriverDelineation" target="_blank">link</a>
             </div>
         </div>
     </div>
